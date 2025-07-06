@@ -1,0 +1,186 @@
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Parallax container
+.parallax-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  // Enable smooth scrolling
+  scroll-behavior: smooth;
+}
+
+// Columns layout
+.parallax-columns {
+  display: flex;
+  width: 100%;
+  min-height: 150vh; // Reduced from 300vh to prevent excessive white space
+  gap: 20px;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    min-height: 200vh; // Reduced from 400vh
+  }
+}
+
+// Individual column styling
+.parallax-column {
+  flex: 1;
+  position: relative;
+  overflow: visible; // Allow content to move outside bounds
+
+  &[data-column="1"] {
+    .column-content {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+  }
+
+  &[data-column="2"] {
+    .column-content {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+    }
+  }
+
+  &[data-column="3"] {
+    .column-content {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+    }
+  }
+
+  &[data-column="4"] {
+    .column-content {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      color: white;
+    }
+  }
+}
+
+// Column content styling
+.column-content {
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  min-height: 120vh; // Reduced from 200vh for better proportion
+
+  h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// Content blocks within columns
+.content-block {
+  margin-bottom: 40px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+
+    @media (max-width: 768px) {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+  }
+
+  p {
+    font-size: 1em;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+
+    @media (max-width: 768px) {
+      font-size: 0.9em;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .parallax-columns {
+    flex-direction: column;
+  }
+
+  .parallax-column {
+    margin-bottom: 20px;
+  }
+
+  .column-content {
+    padding: 20px;
+    min-height: 100vh; // Reduced from 150vh
+  }
+}
+
+// Smooth animations
+.column-content {
+  transition: transform 0.1s ease-out;
+}
+
+// Scrollbar styling
+.parallax-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.parallax-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.parallax-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.parallax-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+// Performance optimizations
+.parallax-column {
+  will-change: transform;
+
+  .column-content {
+    will-change: transform;
+    transform: translateZ(0); // Force hardware acceleration
+  }
+}
