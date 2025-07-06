@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ParallaxColumnsComponent } from './components/parallax-columns/parallax-columns.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ParallaxColumnsComponent],
+  imports: [ParallaxColumnsComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
